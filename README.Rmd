@@ -1,0 +1,52 @@
+---
+title: "README"
+author: "Peter Meißner"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Introduction
+
+Base R's once done choice of setting stringsAsFactors within
+  `data.frame()` and `as.data.frame()` to TRUE by default is a design decision
+  that makes sense on the one hand and on the other hand is supposedly the most
+  often complained about piece of code in the R infrastructure. The hellno
+  package provides an explicit solution to the problem without changing R itself 
+  or having to mess around with options. It tries to solve this problem by 
+  providing alternative `data.frame()` and `as.data.frame()` functions that are 
+  in fact simple wrappers around base R's `data.frame()` and `as.data.frame()` 
+  with `stringAsFactors` option set to `HELLNO` (equals to `FALSE`) by default.
+
+# Using the package
+
+**R's default behaviour...**
+```{r}
+df1 <- data.frame(a=letters[1:3])
+df1$a
+class(df1$a)
+```
+
+
+**R's default behaviour after loading he package**
+```{r}
+library(hellno)
+
+df2 <- data.frame(a=letters[1:3])
+df2$a
+class(df2$a)
+```
+
+# Programming with hellno
+
+While using the hellno package in interactive R mode is nice, in fact it could 
+have been achieved simply by doing something like this: `options("stringsAsFactors"=FALSE)`. 
+The strength of hellno is that it can be imported when writing packages and therefore 
+providing `as.data.frame()` and `data.frame()` with `stringsAsFactors` Option 
+consistently set to `FALSE` within the package and its functions BUT NOT OUTSIDE OF IT. 
+Thus it providdes a way to ease programming while also ensuring that package users might 
+still choose which flavor of `stringsAsFactors` they like best. 
+
+
+
+
+
