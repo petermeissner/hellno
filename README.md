@@ -146,7 +146,17 @@ hellno_df()
 ```
 
 
+... and once again to bring the point home: 
 
 
+```r
+data.frame(a=letters[1:2])$a 
+```
 
+```
+## [1] a b
+## Levels: a b
+```
+
+***WRITING PACAKGES WITH HELLNO DOES NOT CHANGE OUTSIDE BEHAVIOR.***
 

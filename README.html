@@ -124,6 +124,11 @@ data.frame(a=letters[1:2])$a </code></pre>
 <p>… and hence for them string conversion is no matter anymore:</p>
 <pre class="r"><code>hellno_df()</code></pre>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
+<p>… and once again to bring the point home:</p>
+<pre class="r"><code>data.frame(a=letters[1:2])$a </code></pre>
+<pre><code>## [1] a b
+## Levels: a b</code></pre>
+<p><strong><em>WRITING PACAKGES WITH HELLNO DOES NOT CHANGE OUTSIDE BEHAVIOR.</em></strong></p>
 </div>
 
 
