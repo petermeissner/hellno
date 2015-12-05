@@ -1,6 +1,6 @@
 # README
 Peter Meißner  
-`r Sys.Date()`  
+2015-12-05  
 
 # Introduction
 
