@@ -1,11 +1,6 @@
----
-title: "README"
-author: "Peter Meißner"
-date: "`r Sys.Date()`"
-output: 
-  html_document: 
-    keep_md: yes
----
+# README
+Peter Meißner  
+`r Sys.Date()`  
 
 # Introduction
 
@@ -22,20 +17,56 @@ Base R's once done choice of setting stringsAsFactors within
 # Using hellno interactively
 
 **R's default behaviour...**
-```{r}
+
+```r
 df1 <- data.frame(a=letters[1:3])
 df1$a
+```
+
+```
+## [1] a b c
+## Levels: a b c
+```
+
+```r
 class(df1$a)
+```
+
+```
+## [1] "factor"
 ```
 
 
 **R's default behaviour after loading the package**
-```{r}
-library(hellno)
 
+```r
+library(hellno)
+```
+
+```
+## 
+## Attaching package: 'hellno'
+## 
+## Die folgenden Objekte sind maskiert von 'package:base':
+## 
+##     as.data.frame, data.frame
+```
+
+```r
 df2 <- data.frame(a=letters[1:3])
 df2$a
+```
+
+```
+## [1] "a" "b" "c"
+```
+
+```r
 class(df2$a)
+```
+
+```
+## [1] "character"
 ```
 
 # Using hellno for package development
@@ -51,23 +82,30 @@ still choose which flavor of `stringsAsFactors` they like best.
 
 Let us see how this works following a little example. Again, let us start with loading hellno package:
 
-```{r} 
+
+```r
 library(hellno)
 data.frame(a=letters[1:2])$a 
+```
+
+```
+## [1] "a" "b"
 ```
 
 As shown before, character vector are not transformed to factor.
 
 We unload hellno again to start clean. 
 
-```{r}
+
+```r
 unloadNamespace("hellno")
 ```
 
 Now we install the hellnotest package from Github and load it. The package uses hellno internally in two functions. While internal uses of `data.frame()` and `as.data.frame()` will work with `stringsAsFactors=FALSE` as default this does not change how things work everywhere else. 
 
 
-```{r}
+
+```r
 if( !("hellnotests" %in% installed.packages()) ){
   devtools::install_github("petermeissner/hellnotests")
 }
@@ -76,16 +114,35 @@ library(hellnotests)
 data.frame(a=letters[1:2])$a 
 ```
 
+```
+## [1] a b
+## Levels: a b
+```
+
 While all functions within the package use hellno's alternative implementations:
 
-```{r}
+
+```r
 hellno_df
+```
+
+```
+## function () 
+## {
+##     data.frame(a = letters[1:3])$a
+## }
+## <environment: namespace:hellnotests>
 ```
 
 ... and hence for them string conversion is no matter anymore:
 
-```{r}
+
+```r
 hellno_df()
+```
+
+```
+## [1] "a" "b" "c"
 ```
 
 
