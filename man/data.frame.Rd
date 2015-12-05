@@ -7,6 +7,17 @@
 data.frame(..., row.names = NULL, check.rows = FALSE, check.names = TRUE,
   stringsAsFactors = HELLNO)
 }
+\arguments{
+\item{...}{see \code{\link[base]{data.frame}}}
+
+\item{row.names}{see \code{\link[base]{data.frame}}}
+
+\item{check.rows}{see \code{\link[base]{data.frame}}}
+
+\item{check.names}{see \code{\link[base]{data.frame}}}
+
+\item{stringsAsFactors}{see \code{\link[base]{data.frame}} by default set to \code{FALSE}}
+}
 \description{
 \code{hellno::data.frame()} wraps up \code{base::data.frame()} so that
 \code{stringAsFactors} is set to \code{HELLNO} ( \code{== FALSE} ) by default
