@@ -6,7 +6,7 @@ before_install:
   - curl -OL https://raw.githubusercontent.com/metacran/r-builder/master/pkg-build.sh
   - chmod 755 pkg-build.sh
   - mkdir rbuildertest
-  - sed -i 's,http://.*ubuntu.com,http://old-releases.ubuntu.com,g' /etc/apt/sources.list
+  - sudo sed -i 's,http://.*ubuntu.com,http://old-releases.ubuntu.com,g' /etc/apt/sources.list 
   - cp pkg-build.sh rbuildertest
   - cd rbuildertest
   - ./pkg-build.sh bootstrap
