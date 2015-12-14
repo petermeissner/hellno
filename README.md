@@ -1,18 +1,26 @@
-# README
+# Introducing the hellno package
 Peter Meißner  
-2015-12-05  
+2015-12-14  
+
+[![Travis-CI Build Status](https://travis-ci.org/petermeissner/hellno.svg?branch=master)](https://travis-ci.org/petermeissner/hellno)
 
 # Introduction
 
 Base R's once done choice of setting stringsAsFactors within
   `data.frame()` and `as.data.frame()` to TRUE by default is a design decision
-  that makes sense on the one hand and on the other hand is supposedly the most
-  often complained about piece of code in the R infrastructure. The hellno
-  package provides an explicit solution to the problem without changing R itself 
-  or having to mess around with options. It tries to solve this problem by 
-  providing alternative `data.frame()` and `as.data.frame()` functions that are 
-  in fact simple wrappers around base R's `data.frame()` and `as.data.frame()` 
-  with `stringAsFactors` option set to `HELLNO` (equals to `FALSE`) by default.
+  that makes sense (more efficient storage, building statistical models with 
+  factors makes sense) on the one hand and on the other hand is supposedly the 
+  most often complained about piece of code in the R infrastructure. 
+  A search through the source code of all CRAN packages in December 2015 
+  `https://github.com/search?utf8=%E2%9C%93&q=user%3Acran+stringsAsFactors&type=Code` 
+  resulted in 3,795 results for mentions of `stringsAsFactors` and most of 
+  them simply set the value to `FALSE`.
+  The hellno package provides an explicit solution to the problem without 
+  changing R itself or having to mess around with options. It tries to solve 
+  this problem by providing alternative `data.frame()` and `as.data.frame()` 
+  functions that are in fact simple wrappers around base R's `data.frame()` and 
+  `as.data.frame()` with `stringAsFactors` option set to `HELLNO` 
+  (equals to `FALSE`) by default.
 
 # Using hellno interactively
 
@@ -47,7 +55,7 @@ library(hellno)
 ## 
 ## Attaching package: 'hellno'
 ## 
-## Die folgenden Objekte sind maskiert von 'package:base':
+## The following objects are masked from 'package:base':
 ## 
 ##     as.data.frame, data.frame
 ```
