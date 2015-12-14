@@ -1,19 +1,21 @@
 Package: hellno
 Type: Package
-Title: Providing `stringsAsFactor=FALSE` variants of data.frame() and as.data.frame()
-Version: 0.1.0
-Date: 2015-12-04
+Title: Providing `stringsAsFactor=FALSE` variants of data.frame() and
+    as.data.frame()
+Version: 0.0.1
+Date: 2015-12-14
 Author: Peter Meissner
 Maintainer: Peter Meissner <retep.meissner@gmail.com>
-Description: Base R's once done choice of setting stringsAsFactors within
-  `data.frame() and `as.data.frame()` to TRUE by default is a design decission
-  that makes sense on the one hand and on the other hand is supposedly the most
-  often complained about piece of code in the R insfrastructure. The hellno
-  package provides a explcit solution wihtout changing R itself or having to
-  mess around with options. It tries to solve this problem by providing
-  alternative `data.frame()` and `as.data.frame()` functions that are in fact
-  simple wrappers around base R's `data.frame()` and `as.data.frame()` with
-  stringAsFactors option set to HELLNO ( == FALSE ) by default.
+Description: Base R default setting for `stringsAsFactors=TRUE` within
+    `data.frame() and `as.data.frame()` is supposedly the most often complained
+    about piece of code in the R insfrastructure. The hellno package provides
+    a explcit solution without changing R itself or having to mess around with
+    options. It tries to solve this problem by providing alternative
+    `data.frame()` and `as.data.frame()` functions that are in fact simple
+    wrappers around base R's `data.frame()` and `as.data.frame()` with
+    `stringAsFactors` option set to HELLNO ( which in turn equals FALSE )
+    by default.
 License: MIT + file LICENSE
 LazyData: TRUE
 Suggests: testthat
+RoxygenNote: 5.0.1
