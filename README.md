@@ -2,25 +2,25 @@
 Peter Meißner  
 2015-12-14  
 
-[![Travis-CI Build Status](https://travis-ci.org/petermeissner/hellno.svg?branch=master)](https://travis-ci.org/petermeissner/hellno)
+
 
 # Introduction
 
-Base R's once done choice of setting stringsAsFactors within
-  `data.frame()` and `as.data.frame()` to TRUE by default is a design decision
-  that makes sense (more efficient storage, building statistical models with 
-  factors makes sense) on the one hand and on the other hand is supposedly the 
-  most often complained about piece of code in the R infrastructure. 
+Base R's `stringsAsFactors` default setting within
+  `data.frame()` and `as.data.frame()` to `TRUE` is supposedly the 
+  most often complained about piece of code in the whole R infrastructure. 
   A search through the source code of all CRAN packages in December 2015 
   `https://github.com/search?utf8=%E2%9C%93&q=user%3Acran+stringsAsFactors&type=Code` 
   resulted in 3,795 results for mentions of `stringsAsFactors` and most of 
   them simply set the value to `FALSE`.
+  
   The hellno package provides an explicit solution to the problem without 
   changing R itself or having to mess around with options. It tries to solve 
   this problem by providing alternative `data.frame()` and `as.data.frame()` 
   functions that are in fact simple wrappers around base R's `data.frame()` and 
   `as.data.frame()` with `stringAsFactors` option set to `HELLNO` 
-  (equals to `FALSE`) by default.
+  (which in turn equals to `FALSE`; see here
+  [tweet1](https://twitter.com/quominus/status/661511485483450368), here [tweet2](https://twitter.com/xieyihui/status/655063106024964096), here [tweet3](https://twitter.com/stefanbache/status/672796075263180800), and very much here [sillylogic](https://github.com/nutterb/sillylogic/blob/master/README.md)) by default.
 
 # Using hellno interactively
 
@@ -55,7 +55,7 @@ library(hellno)
 ## 
 ## Attaching package: 'hellno'
 ## 
-## The following objects are masked from 'package:base':
+## Die folgenden Objekte sind maskiert von 'package:base':
 ## 
 ##     as.data.frame, data.frame
 ```
@@ -82,9 +82,10 @@ class(df2$a)
 While using the hellno package in interactive R mode is nice, in fact it could 
 have been achieved simply by doing something like this: `options("stringsAsFactors"=FALSE)`. 
 The strength of hellno is that it can be imported when writing packages and therefore 
-providing `as.data.frame()` and `data.frame()` with `stringsAsFactors` Option 
-consistently set to `FALSE`. Once imported `stringsAsFactors=FALSE` will be the default for all uses of `data.frame()` and `as.data.frame()` within all package functions BUT NOT OUTSIDE OF IT. 
-Thus it provides a way to ease programming while also ensuring that package users might 
+providing `as.data.frame()` and `data.frame()` with `stringsAsFactors` option 
+consistently set to `FALSE` throughout the whole package. 
+Once imported `stringsAsFactors=FALSE` will be the default for all uses of `data.frame()` and `as.data.frame()` within all package functions BUT NOT OUTSIDE OF IT. 
+Thus it provides a way to ease programming while also ensuring that package users can
 still choose which flavor of `stringsAsFactors` they like best. 
 
 
@@ -168,3 +169,4 @@ data.frame(a=letters[1:2])$a
 
 ***WRITING PACAKGES WITH HELLNO DOES NOT CHANGE OUTSIDE BEHAVIOR.***
 
+Have fun. 
