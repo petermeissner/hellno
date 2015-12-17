@@ -2,6 +2,8 @@
 Peter Meißner  
 2015-12-14  
 
+![](http://cranlogs.r-pkg.org/badges/grand-total/hellno)
+![](http://www.r-pkg.org/badges/version/hellno)
 
 
 # Introduction

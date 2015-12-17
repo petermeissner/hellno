@@ -1,5 +1,5 @@
 ---
-title: "Introducing the hellno package"
+title: "Hell-Yeah there is a hellno"
 author: "Peter Meißner"
 date: "2015-12-14"
 output: 
@@ -7,24 +7,20 @@ output:
     keep_md: yes
 ---
 
-![](http://cranlogs.r-pkg.org/badges/grand-total/hellno)
-![](http://www.r-pkg.org/badges/version/hellno)
 
 
 # Introduction
 
-Base R's `stringsAsFactors` default setting within
-  `data.frame()` and `as.data.frame()` to `TRUE` is supposedly the 
-  most often complained about piece of code in the whole R infrastructure. 
-  A search through the source code of all CRAN packages in December 2015 
-  `https://github.com/search?utf8=%E2%9C%93&q=user%3Acran+stringsAsFactors&type=Code` 
-  resulted in 3,795 results for mentions of `stringsAsFactors` and most of 
-  them simply set the value to `FALSE`.
+Base R's `stringsAsFactors` default setting is among the most most 
+  often complained about and re-set piecees of code in the whole R infrastructure. 
+  A search through the source code of all [CRAN packages in December 2015 
+  lists 3,492](https://github.com/search?p=3&q=language%3Ar+user%3Acran+stringsAsFactors&ref=searchresults&type=Code&utf8=%E2%9C%93) code snippets with `stringsAsFactors`. Most of 
+  the time it is used to overide the default of `data.frame()` or `as.data.frame()`.
   
   The hellno package provides an explicit solution to the problem without 
-  changing R itself or having to mess around with options. It tries to solve 
-  this problem by providing alternative `data.frame()` and `as.data.frame()` 
-  functions that are in fact simple wrappers around base R's `data.frame()` and 
+  changing R itself or having to mess around with options. The approach is simple:
+it provides reimplementations of`data.frame()` and `as.data.frame()` that are 
+in fact oonly wrappers around base R's `data.frame()` and 
   `as.data.frame()` with `stringAsFactors` option set to `HELLNO` 
   (which in turn equals to `FALSE`; see here
   [tweet1](https://twitter.com/quominus/status/661511485483450368), here [tweet2](https://twitter.com/xieyihui/status/655063106024964096), here [tweet3](https://twitter.com/stefanbache/status/672796075263180800), and very much here [sillylogic](https://github.com/nutterb/sillylogic/blob/master/README.md)) by default.
