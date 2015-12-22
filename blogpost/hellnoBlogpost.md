@@ -1,51 +1,52 @@
-# Hell-Yeah there is a hellno
+# One Solution to the 'stringsAsFactors'-Problem <br>Or: Hell-Yeah there is HELLNO
 Peter Meißner  
 2015-12-14  
 
+<div style="text-align:center;">
+[![](fig/logohellno100.png)](http://rtalk.org/strings-as-factors_hell-no_hex-sticker/) [![](fig/clinthellno100.png)](https://twitter.com/zenrhino/status/623226883644129280) [![](fig/hellno100.png)](https://cran.r-project.org/web/packages/hellno/index.html)
+</div>
 
+
+<div style="text-align:center;">    
+  <br>
+  [![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/web/packages/hellno/index.html)
+</div>
 
 # Introduction
 
-Base R's `stringsAsFactors` default setting is among the most most 
-  often complained about and re-set piecees of code in the whole R infrastructure. 
-  A search through the source code of all [CRAN packages in December 2015 
-  lists 3,492](https://github.com/search?p=3&q=language%3Ar+user%3Acran+stringsAsFactors&ref=searchresults&type=Code&utf8=%E2%9C%93) code snippets with `stringsAsFactors`. Most of 
-  the time it is used to overide the default of `data.frame()` or `as.data.frame()`.
+Base R's `stringsAsFactors` default setting is supposedly the 
+  most often complained about piece of code in the whole R infrastructure. 
+  A search through the source code of all CRAN packages in December 2015 ([Link](https://github.com/search?utf8=%E2%9C%93&q=user%3Acran+stringsAsFactors&type=Code))
+  resulted in 3,492 mentions of `stringsAsFactors`. Most of the time these explicit 
+  mentions where found within calls to `data.frame()` or `as.data.frame()` and 
+  simply set the value to `FALSE`. 
   
   The hellno package provides an explicit solution to the problem without 
-  changing R itself or having to mess around with options. The approach is simple:
-it provides reimplementations of`data.frame()` and `as.data.frame()` that are 
-in fact oonly wrappers around base R's `data.frame()` and 
-  `as.data.frame()` with `stringAsFactors` option set to `HELLNO` 
-  (which in turn equals to `FALSE`; see here
-  [tweet1](https://twitter.com/quominus/status/661511485483450368), here [tweet2](https://twitter.com/xieyihui/status/655063106024964096), here [tweet3](https://twitter.com/stefanbache/status/672796075263180800), and very much here [sillylogic](https://github.com/nutterb/sillylogic/blob/master/README.md)) by default.
+  changing R itself or having to mess around with options. One could use e.g.:
+  `options("stringsAsFactors" = FALSE)` to re-set the global default behavior. 
+  Instead hellno tackles the problem from another direction, namely by 
+  providing alternative implementations of `data.frame()` and `as.data.frame()`. 
+  Those *re*-implementations are in fact simple wrappers around base R's very own 
+  `data.frame()` and `as.data.frame()` with `stringAsFactors` option set to 
+  `HELLNO` - which in turn equals to `FALSE` and gives the package its name.
+  
+  Some info material and crediting for 'hellno' as catch phrase - thanks Clint?: 
+  
+  - [Some girls and Clint](https://twitter.com/zenrhino/status/623226883644129280)
+  - [THE (official) LOGO](http://rtalk.org/strings-as-factors_hell-no_hex-sticker/)
+  - [twitter-search](https://twitter.com/search?q=stringsAsFactors%3DHELLNO&src=typd) 
+  - [sillylogic](https://github.com/nutterb/sillylogic/blob/master/README.md) (The one and only package with hand-crafted logical constants)
+
+
 
 # Using hellno interactively
 
-**R's default behaviour...**
+Using the package is simple - load it, note the message indicating masking two base functions and code on - from now on no type conversion will take place within `data.frame()` and `as.data.frame()`:
+
 
 ```r
-df1 <- data.frame(a=letters[1:3])
-df1$a
-```
-
-```
-## [1] a b c
-## Levels: a b c
-```
-
-```r
-class(df1$a)
-```
-
-```
-## [1] "factor"
-```
-
-
-**R's default behaviour after loading the package**
-
-```r
+# options(repos = c(CRAN = "https://cran.rstudio.com"))
+# install.packages("hellno")
 library(hellno)
 ```
 
@@ -58,16 +59,9 @@ library(hellno)
 ##     as.data.frame, data.frame
 ```
 
+
 ```r
 df2 <- data.frame(a=letters[1:3])
-df2$a
-```
-
-```
-## [1] "a" "b" "c"
-```
-
-```r
 class(df2$a)
 ```
 
@@ -75,14 +69,15 @@ class(df2$a)
 ## [1] "character"
 ```
 
+
+
 # Using hellno for package development
 
-While using the hellno package in interactive R mode is nice, in fact it could 
-have been achieved simply by doing something like this: `options("stringsAsFactors"=FALSE)`. 
-The strength of hellno is that it can be imported when writing packages and therefore 
-providing `as.data.frame()` and `data.frame()` with `stringsAsFactors` option 
-consistently set to `FALSE` throughout the whole package. 
-Once imported `stringsAsFactors=FALSE` will be the default for all uses of `data.frame()` and `as.data.frame()` within all package functions BUT NOT OUTSIDE OF IT. 
+While using hellno in interactive R is nice, in fact its real strength is 
+that it can be imported when writing packages. 
+Once imported `stringsAsFactors=FALSE` will be the default for all uses of 
+`data.frame()` and `as.data.frame()` within all package functions BUT NOT OUTSIDE OF IT. 
+
 Thus it provides a way to ease programming while also ensuring that package users can
 still choose which flavor of `stringsAsFactors` they like best. 
 
@@ -99,7 +94,7 @@ data.frame(a=letters[1:2])$a
 ## [1] "a" "b"
 ```
 
-As shown before, character vector are not transformed to factor.
+As shown before, character vectors are not transformed to factor when hellno is loaded.
 
 We unload hellno again to start clean. 
 
@@ -108,7 +103,7 @@ We unload hellno again to start clean.
 unloadNamespace("hellno")
 ```
 
-Now we install the hellnotest package from Github and load it. The package uses hellno internally in two functions. While internal uses of `data.frame()` and `as.data.frame()` will work with `stringsAsFactors=FALSE` as default this does not change how things work everywhere else. 
+Now we install the hellnotest package from GitHub and load it. The hellnotest package imports hellno and therefore its function `hellno_df()` will not convert character vectors to factor while functions outside the packages scope will not be affected: 
 
 
 
@@ -118,12 +113,6 @@ if( !("hellnotests" %in% installed.packages()) ){
 }
 
 library(hellnotests)
-data.frame(a=letters[1:2])$a 
-```
-
-```
-## [1] a b
-## Levels: a b
 ```
 
 While all functions within the package use hellno's alternative implementations:
@@ -141,7 +130,7 @@ hellno_df
 ## <environment: namespace:hellnotests>
 ```
 
-... and hence for them string conversion is no matter anymore:
+... and hence for them character vector conversion does not happen anymore:
 
 
 ```r
@@ -152,8 +141,7 @@ hellno_df()
 ## [1] "a" "b" "c"
 ```
 
-
-... and once again to bring the point home: 
+... functions outside the package (like `data.frame()` from the base package) are not affected at all: 
 
 
 ```r
@@ -165,6 +153,29 @@ data.frame(a=letters[1:2])$a
 ## Levels: a b
 ```
 
-***WRITING PACAKGES WITH HELLNO DOES NOT CHANGE OUTSIDE BEHAVIOR.***
 
-Have fun. 
+# Summing it up
+
+
+- Using hellno interactively makes the change of the default setting very explicit. 
+- Writing packages with hellno does not change outside behavior. 
+- R is Rsome. 
+
+
+Have fun and ...
+
+<div style="text-align:center;">
+![](fig/besinnlicheweihnachten.png)
+</div>
+
+# Discussion
+
+If you have thoughts/ideas on the "stringsAsFactors"-problem, e.g. you do not like this solution because ... I [herewith open the issues section](https://github.com/petermeissner/hellno/issues) of [the package's GitHub repository](https://github.com/petermeissner/hellno) for general discussion of the theme and related stuff. I am very much interested on what you think. 
+
+
+
+
+
+
+
+
