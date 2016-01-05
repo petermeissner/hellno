@@ -15,15 +15,16 @@ output:
 </div>
 -->
 
-![](blogpost/fig/logohellno100.png)
-![](blogpost/fig/clinthellno100.png) 
-![](blogpost/fig/hellno100.png)
-
 [![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/web/packages/hellno/index.html)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/hellno)
 
 
+
 # Introduction
+
+![](blogpost/fig/hellno100.png)
+![](blogpost/fig/logohellno100.png)
+![](blogpost/fig/clinthellno100.png) 
 
 Base R's `stringsAsFactors` default setting is supposedly the 
   most often complained about piece of code in the whole R infrastructure. 
