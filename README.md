@@ -2,42 +2,52 @@
 Peter Meißner  
 2015-12-14  
 
-[![](fig/hellno50.png)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/hellno)
-![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/web/packages/hellno/index.html)
-
-
-
+![](http://www.r-pkg.org/badges/version/hellno)
 
 
 # Introduction
 
-Base R's `stringsAsFactors` default setting is supposedly the 
+Base R's `stringsAsFactors` default setting within
+  `data.frame()` and `as.data.frame()` to `TRUE` is supposedly the 
   most often complained about piece of code in the whole R infrastructure. 
-  A search through the source code of all CRAN packages in December 2015 ([Link](https://github.com/search?utf8=%E2%9C%93&q=user%3Acran+stringsAsFactors&type=Code))
-  resulted in 3,795 mentions of `stringsAsFactors`. Most of the time these explicit 
-  mentions where found within calls to `data.frame()` or `as.data.frame()` and 
-  simply set the value to `FALSE`. 
+  A search through the source code of all CRAN packages in December 2015 
+  `https://github.com/search?utf8=%E2%9C%93&q=user%3Acran+stringsAsFactors&type=Code` 
+  resulted in 3,795 results for mentions of `stringsAsFactors` and most of 
+  them simply set the value to `FALSE`.
   
   The hellno package provides an explicit solution to the problem without 
-  changing R itself or having to mess around with options. One could use e.g.:
-  `options("stringsAsFactors"=FALSE)` to re-set the global default behaviour. 
-  Instead hellno tackles the problem from another direction, namely by 
-  providing alternative implementations of `data.frame()` and `as.data.frame()`. 
-  Those re-implementations are in fact simple wrappers around base R's very own 
-  `data.frame()` and `as.data.frame()` with `stringAsFactors` option set to 
-  `HELLNO` -- which in turn equals to `FALSE` and gives the package it's name.
-  
-  See how the buzzword flies around in the net: 
-  
-  - [twitter-search](https://twitter.com/search?q=stringsAsFactors%3DHELLNO&src=typd) 
-  - [tweet1](https://twitter.com/quominus/status/661511485483450368) Quominus, father of `stringsAsFactors=HELLNO`
-  - [tweet2](https://twitter.com/xieyihui/status/655063106024964096) the next micropackage?
-  - [sillylogic](https://github.com/nutterb/sillylogic/blob/master/README.md) (The one and only package with hand-crafted logical constants)
+  changing R itself or having to mess around with options. It tries to solve 
+  this problem by providing alternative `data.frame()` and `as.data.frame()` 
+  functions that are in fact simple wrappers around base R's `data.frame()` and 
+  `as.data.frame()` with `stringAsFactors` option set to `HELLNO` 
+  (which in turn equals to `FALSE`; see here
+  [tweet1](https://twitter.com/quominus/status/661511485483450368), here [tweet2](https://twitter.com/xieyihui/status/655063106024964096), here [tweet3](https://twitter.com/stefanbache/status/672796075263180800), and very much here [sillylogic](https://github.com/nutterb/sillylogic/blob/master/README.md)) by default.
 
 # Using hellno interactively
 
-Using the package is simple - load it, note the message indicating the masking ...
+**R's default behaviour...**
+
+```r
+df1 <- data.frame(a=letters[1:3])
+df1$a
+```
+
+```
+## [1] a b c
+## Levels: a b c
+```
+
+```r
+class(df1$a)
+```
+
+```
+## [1] "factor"
+```
+
+
+**R's default behaviour after loading the package**
 
 ```r
 library(hellno)
@@ -47,15 +57,21 @@ library(hellno)
 ## 
 ## Attaching package: 'hellno'
 ## 
-## The following objects are masked from 'package:base':
+## Die folgenden Objekte sind maskiert von 'package:base':
 ## 
 ##     as.data.frame, data.frame
 ```
 
-... and here we go:
-
 ```r
 df2 <- data.frame(a=letters[1:3])
+df2$a
+```
+
+```
+## [1] "a" "b" "c"
+```
+
+```r
 class(df2$a)
 ```
 
@@ -153,13 +169,6 @@ data.frame(a=letters[1:2])$a
 ## Levels: a b
 ```
 
+***WRITING PACAKGES WITH HELLNO DOES NOT CHANGE OUTSIDE BEHAVIOR.***
 
-
-# Summing it up
-
-- Writing packages with hellno does not change outside behaviour. 
-- Using hellno interactively makes the change of default setting very explicit. 
-
-Have fun and ...
-
-![](fig/besinnlicheweihnachten.png)
+Have fun. 
