@@ -1,11 +1,17 @@
 # One Solution to the 'stringsAsFactors'-Problem <br>Or: Hell-Yeah there is HELLNO
 Peter Meißner  
 2015-12-14  
-
+<!--
 <div style="text-align:center;">
 [![](blogpost/fig/logohellno100.png)](http://rtalk.org/strings-as-factors_hell-no_hex-sticker/) [![](blogpost/fig/clinthellno100.png)](https://twitter.com/zenrhino/status/623226883644129280) [![](blogpost/fig/hellno100.png)](https://cran.r-project.org/web/packages/hellno/index.html)
 </div>
+-->
 
+<div style="text-align:center;">
+![](blogpost/fig/logohellno100.png)
+![](blogpost/fig/clinthellno100.png) 
+![](blogpost/fig/hellno100.png)
+</div>
 
 <div style="text-align:center;">    
   <br>
