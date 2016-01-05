@@ -15,17 +15,13 @@ output:
 </div>
 -->
 
-<div style="text-align:center;">
 ![](blogpost/fig/logohellno100.png)
 ![](blogpost/fig/clinthellno100.png) 
 ![](blogpost/fig/hellno100.png)
-</div>
 
-<div style="text-align:center;">    
-  <br>
-  [![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/web/packages/hellno/index.html)
-  ![](http://cranlogs.r-pkg.org/badges/grand-total/hellno)
-</div>
+[![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/web/packages/hellno/index.html)
+![](http://cranlogs.r-pkg.org/badges/grand-total/hellno)
+
 
 # Introduction
 
