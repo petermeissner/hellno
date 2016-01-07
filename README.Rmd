@@ -116,6 +116,7 @@ classes(res)
 ```
 
 
+[See also the bug report and a much more in depth discussion on the internals of the problem](https://bugs.r-project.org/bugzilla3/show_bug.cgi?id=16658)
 
 
 

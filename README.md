@@ -12,6 +12,9 @@ Peter Meißner
 ![](blogpost/fig/clinthellno100.png) 
 
 
+
+# Info
+
 [![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/web/packages/hellno/index.html)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/hellno)
 
@@ -108,7 +111,7 @@ library(hellno)
 ## 
 ## Attaching package: 'hellno'
 ## 
-## The following objects are masked from 'package:base':
+## Die folgenden Objekte sind maskiert von 'package:base':
 ## 
 ##     as.data.frame, data.frame, rbind
 ```
@@ -132,6 +135,7 @@ classes(res)
 ```
 
 
+[See also the bug report and a much more in depth discussion on the internals of the problem](https://bugs.r-project.org/bugzilla3/show_bug.cgi?id=16658)
 
 
 
