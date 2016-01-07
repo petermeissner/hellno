@@ -7,16 +7,26 @@ Peter Meißner
 </div>
 -->
 
+![](blogpost/fig/hellno100.png)
+![](blogpost/fig/logohellno100.png)
+![](blogpost/fig/clinthellno100.png) 
+
+
 [![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/web/packages/hellno/index.html)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/hellno)
 
 
 
-# Introduction
 
-![](blogpost/fig/hellno100.png)
-![](blogpost/fig/logohellno100.png)
-![](blogpost/fig/clinthellno100.png) 
+
+
+# Motivation and problems to solve
+
+
+
+## Introduction
+
+
 
 Base R's `stringsAsFactors` default setting is supposedly the 
   most often complained about piece of code in the whole R infrastructure. 
@@ -43,7 +53,94 @@ Base R's `stringsAsFactors` default setting is supposedly the
 
 
 
-# Using hellno interactively
+
+
+## The `rbind()` - `data.frame()` Situation
+
+When filling data frames with `rbind()` it might happen, that despite all efforts rbind might return data frames with factors in it. 
+
+Imagine a situation like this: You do some looping and results should be added to a data frame along the way. So you define an empty data frame and within the loop you add to it via rbind.
+
+Before starting with some examples, let us have an little helper functions for returning data frame column classes:
+
+
+```r
+classes <- function(df){
+  lapply(df, class)
+}
+```
+
+
+Now we can start with base R behavior: 
+
+
+
+```r
+res <- base::data.frame(stringsAsFactors = FALSE)
+
+for(i in 1:3){
+  res <- base::rbind(res, c("a","b"))
+}
+
+classes(res)
+```
+
+```
+## $X.a.
+## [1] "factor"
+## 
+## $X.b.
+## [1] "factor"
+```
+
+... and of cause using `hellno::data.frame()` results in the same problem because it internally does the same as the example above -- setting the stringsAsFactors parameter to FALSE. 
+
+Therefore, hellno has an additional wrapper around rbind to check for the problem and circumvent it. In any other case `hellno::rbind()` will simply pass all arguments through to `base::rbind()`. 
+
+See, it works: 
+
+
+```r
+library(hellno)
+```
+
+```
+## 
+## Attaching package: 'hellno'
+## 
+## The following objects are masked from 'package:base':
+## 
+##     as.data.frame, data.frame, rbind
+```
+
+```r
+res <- data.frame(stringsAsFactors = FALSE)
+
+for(i in 1:3){
+  res <- rbind(res, c("a","b"))
+}
+
+classes(res)
+```
+
+```
+## $V1
+## [1] "character"
+## 
+## $V2
+## [1] "character"
+```
+
+
+
+
+
+# Using hellno 
+
+
+
+
+## interactively
 
 Using the package is simple - load it, note the message indicating masking two base functions and code on - from now on no type conversion will take place within `data.frame()` and `as.data.frame()`:
 
@@ -52,15 +149,6 @@ Using the package is simple - load it, note the message indicating masking two b
 # options(repos = c(CRAN = "https://cran.rstudio.com"))
 # install.packages("hellno")
 library(hellno)
-```
-
-```
-## 
-## Attaching package: 'hellno'
-## 
-## Die folgenden Objekte sind maskiert von 'package:base':
-## 
-##     as.data.frame, data.frame
 ```
 
 
@@ -75,7 +163,7 @@ class(df2$a)
 
 
 
-# Using hellno for package development
+## package development
 
 While using hellno in interactive R is nice, in fact its real strength is 
 that it can be imported when writing packages. 
@@ -158,6 +246,9 @@ data.frame(a=letters[1:2])$a
 ```
 
 
+
+
+
 # Summing it up
 
 
@@ -168,9 +259,23 @@ data.frame(a=letters[1:2])$a
 
 Have fun.
 
+
+
+
+
 # Discussion
 
 If you have thoughts/ideas on the "stringsAsFactors"-problem, e.g. you do not like this solution because ... I [herewith open the issues section](https://github.com/petermeissner/hellno/issues) of [the package's GitHub repository](https://github.com/petermeissner/hellno) for general discussion of the theme and related stuff. I am very much interested on what you think. 
+
+
+
+
+
+
+
+
+
+
 
 
 

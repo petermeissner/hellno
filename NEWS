@@ -1,0 +1,15 @@
+version 0.0.2
+--------------------------------------------------------------------------------
+
+* FEATURE
+    - wrapper around base::rbind() to cope with:
+    `lapply( rbind(data.frame(stringsAsFactors=FALSE), "a"), class )`
+
+
+version 0.0.1
+--------------------------------------------------------------------------------
+
+* FEATURE
+    - 'stringsAsFactors=FALSE'-default wrapper around base::data.frame()
+    - 'stringsAsFactors=FALSE'-default wrapper around base::as.data.frame()
+
