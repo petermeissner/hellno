@@ -1,0 +1,16 @@
+#!/usr/bin/Rscript
+
+library(testthat)
+
+if( Sys.info()["nodename"]=="ZUKD208" ){
+	auto_test(
+		code_path="C:/Dropbox/RPackages/hellno/r", 
+		test_path="C:/Dropbox/RPackages/hellno/tests/testthat"
+	)
+}
+
+if( Sys.info()["nodename"]=="peter-mint" ){
+	auto_test_package(pkg = "~/Dropbox/RPackages/hellno", reporter = "summary")
+}
+
+
