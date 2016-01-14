@@ -3,7 +3,7 @@ Peter Meißner
 2015-12-14  
 
 <div style="text-align:center;">
-[![](fig/logohellno100.png)](http://rtalk.org/strings-as-factors_hell-no_hex-sticker/) [![](fig/clinthellno100.png)](https://twitter.com/zenrhino/status/623226883644129280) [![](fig/hellno100.png)](https://cran.r-project.org/web/packages/hellno/index.html)
+ [![](fig/hellno50.png)](https://cran.r-project.org/web/packages/hellno/index.html)
 </div>
 
 
@@ -53,8 +53,10 @@ library(hellno)
 ```
 ## 
 ## Attaching package: 'hellno'
-## 
-## Die folgenden Objekte sind maskiert von 'package:base':
+```
+
+```
+## The following objects are masked from 'package:base':
 ## 
 ##     as.data.frame, data.frame
 ```
