@@ -7,10 +7,12 @@ Peter Meißner
 </div>
 -->
 
+
 ![](blogpost/fig/hellno50.png)
 
 
 **Info**
+
 
 [![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/web/packages/hellno/index.html)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/hellno)
@@ -19,7 +21,9 @@ Peter Meißner
 
 
 
+
 **Introduction**
+
 
 
 
@@ -50,7 +54,9 @@ Base R's `stringsAsFactors` default setting is supposedly the
 
 
 
+
 **Using hellno interactively**
+
 
 Using the package is simple - load it, note the message indicating masking two base functions and code on - from now on no type conversion will take place within `data.frame()` and `as.data.frame()`:
 
@@ -84,7 +90,9 @@ class(df2$a)
 
 
 
+
 **Using hellno for package development**
+
 
 While using hellno in interactive R is nice, in fact its real strength is 
 that it can be imported when writing packages. 
@@ -170,7 +178,9 @@ data.frame(a=letters[1:2])$a
 
 
 
+
 **Summing it up**
+
 
 
 - Using hellno interactively makes the change of the default setting very explicit. 
@@ -184,7 +194,9 @@ Have fun.
 
 
 
+
 **Discussion**
+
 
 If you have thoughts/ideas on the "stringsAsFactors"-problem, e.g. you do not like this solution because ... I [herewith open the issues section](https://github.com/petermeissner/hellno/issues) of [the package's GitHub repository](https://github.com/petermeissner/hellno) for general discussion of the theme and related stuff. I am very much interested on what you think. 
 
