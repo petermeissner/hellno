@@ -3,4 +3,3 @@
 export(HELLNO)
 export(as.data.frame)
 export(data.frame)
-export(rbind)

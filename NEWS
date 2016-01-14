@@ -1,11 +1,3 @@
-version 0.0.2
---------------------------------------------------------------------------------
-
-* FEATURE
-    - wrapper around base::rbind() to cope with:
-    `lapply( rbind(data.frame(stringsAsFactors=FALSE), "a"), class )`
-
-
 version 0.0.1
 --------------------------------------------------------------------------------
 

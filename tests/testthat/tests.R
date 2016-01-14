@@ -22,13 +22,15 @@ test_that(
 )
 
 
-context("rbind does not produce factors")
+context("rbind does not produce factors, most of the time")
 
 test_that(
   "just test it",
   {
-    expect_true( lapply(rbind(data.frame(), "a"), class)=="character" )
-    expect_true( lapply(rbind("a", data.frame()), class)=="character" )
+    expect_true( lapply(rbind(data.frame(), data.frame("a")), class)=="character" )
+    #expect_true( lapply(rbind(data.frame(), "a"), class)=="character" )
+    expect_true( lapply(rbind("a", data.frame("b")), class)=="character" )
+    expect_true( lapply(rbind(data.frame("b"), "a"), class)=="character" )
     expect_true( lapply(base::rbind("a", data.frame(), data.frame("b")), class)=="character" )
     expect_true( lapply(base::rbind(data.frame(), data.frame("a")), class)=="character" )
   }
