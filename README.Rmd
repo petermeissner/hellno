@@ -49,10 +49,11 @@ Base R's `stringsAsFactors` default setting is supposedly the
   changing R itself or having to mess around with options. One could use e.g.:
   `options("stringsAsFactors" = FALSE)` to re-set the global default behavior. 
   Instead hellno tackles the problem from another direction, namely by 
-  providing alternative implementations of `data.frame()` and `as.data.frame()`. 
+  providing alternative implementations of `data.frame()`, `as.data.frame()` and `rbind.as.data.frame()`. 
   Those *re*-implementations are in fact simple wrappers around base R's very own 
-  `data.frame()` and `as.data.frame()` with `stringAsFactors` option set to 
-  `HELLNO` - which in turn equals to `FALSE` and gives the package its name.
+  `data.frame()`, `as.data.frame()` and `rbind.as.data.frame()`
+  with `stringAsFactors` option set to  `HELLNO` - which in turn equals to `FALSE` 
+  and gives the package its name.
   
   Some info material and crediting for 'hellno' as catch phrase - thanks Clint?: 
   

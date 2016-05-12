@@ -2,7 +2,7 @@ Package: hellno
 Type: Package
 Title: Providing 'stringsAsFactors=FALSE' Variants of 'data.frame()' and
     'as.data.frame()'
-Version: 0.0.1.9000
+Version: 0.2.0.9000
 Date: 2015-12-14
 Author: Peter Meissner
 Maintainer: Peter Meissner <retep.meissner@gmail.com>
