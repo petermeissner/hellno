@@ -3,7 +3,7 @@ Peter Meißner
 2015-12-14  
 <!--
 <div style="text-align:center;">
-[![](blogpost/fig/logohellno100.png)](http://rtalk.org/strings-as-factors_hell-no_hex-sticker/) [![](blogpost/fig/clinthellno100.png)](https://twitter.com/zenrhino/status/623226883644129280) [![](blogpost/fig/hellno100.png)](https://cran.r-project.org/web/packages/hellno/index.html)
+[![](blogpost/fig/logohellno100.png)](http://rtalk.org/strings-as-factors_hell-no_hex-sticker/) [![](blogpost/fig/clinthellno100.png)](https://twitter.com/zenrhino/status/623226883644129280) [![](blogpost/fig/hellno100.png)](https://cran.r-project.org/package=hellno)
 </div>
 -->
 
@@ -14,7 +14,7 @@ Peter Meißner
 **Info**
 
 
-[![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/web/packages/hellno/index.html)
+[![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/package=hellno)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/hellno)
 
 
@@ -38,10 +38,11 @@ Base R's `stringsAsFactors` default setting is supposedly the
   changing R itself or having to mess around with options. One could use e.g.:
   `options("stringsAsFactors" = FALSE)` to re-set the global default behavior. 
   Instead hellno tackles the problem from another direction, namely by 
-  providing alternative implementations of `data.frame()` and `as.data.frame()`. 
+  providing alternative implementations of `data.frame()`, `as.data.frame()` and `rbind.as.data.frame()`. 
   Those *re*-implementations are in fact simple wrappers around base R's very own 
-  `data.frame()` and `as.data.frame()` with `stringAsFactors` option set to 
-  `HELLNO` - which in turn equals to `FALSE` and gives the package its name.
+  `data.frame()`, `as.data.frame()` and `rbind.as.data.frame()`
+  with `stringAsFactors` option set to  `HELLNO` - which in turn equals to `FALSE` 
+  and gives the package its name.
   
   Some info material and crediting for 'hellno' as catch phrase - thanks Clint?: 
   
@@ -75,7 +76,7 @@ library(hellno)
 ```
 ## The following objects are masked from 'package:base':
 ## 
-##     as.data.frame, data.frame
+##     as.data.frame, data.frame, rbind, rbind.data.frame
 ```
 
 
@@ -132,7 +133,34 @@ Now we install the hellnotest package from GitHub and load it. The hellnotest pa
 if( !("hellnotests" %in% installed.packages()) ){
   devtools::install_github("petermeissner/hellnotests")
 }
+```
 
+```
+## Downloading GitHub repo petermeissner/hellnotests@master
+## from URL https://api.github.com/repos/petermeissner/hellnotests/zipball/master
+```
+
+```
+## Installing hellnotests
+```
+
+```
+## Skipping 1 package ahead of CRAN: hellno
+```
+
+```
+## '/usr/lib/R/bin/R' --no-site-file --no-environ --no-save --no-restore  \
+##   --quiet CMD INSTALL  \
+##   '/tmp/RtmpxfgqM4/devtools1b112a56feff/petermeissner-hellnotests-9536717'  \
+##   --library='/home/peter/R/x86_64-pc-linux-gnu-library/3.3'  \
+##   --install-tests
+```
+
+```
+## 
+```
+
+```r
 library(hellnotests)
 ```
 
