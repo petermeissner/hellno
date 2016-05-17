@@ -4,6 +4,7 @@ Testing:
 - tested successfully with Windows (dev) and Ubuntu 14 LTS (stable, old)
 
 
+
 - win_build: 	
 
     Your package hellno_0.2.0.tar.gz has been built (if working) and checked for Windows.
@@ -19,6 +20,7 @@ Testing:
 
 
 
+
 - local Linux (Ubuntu 14.04.4 LTS):
     
     * using log directory ‘/home/peter/Dropbox/RPackages/hellno.Rcheck’
@@ -28,7 +30,7 @@ Testing:
     * using options ‘--no-manual --as-cran’
     
     ...
-    
+
     R CMD check results
     0 errors | 0 warnings | 0 notes
     
@@ -53,4 +55,5 @@ Testing:
     Status: 1 NOTE
     
     - --> The note complaints about non-standard files - but those should be excluded anyways and that note does not show up on WinBuild - os it should be a false positive.
+
     
