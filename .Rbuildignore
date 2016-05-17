@@ -7,3 +7,5 @@ cran-comments.md
 blogpost
 blogpost/*
 dev.R
+autotest.Rexec
+fig

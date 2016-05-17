@@ -25,7 +25,7 @@ output:
 **Info**
 
 
-[![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/web/packages/hellno/index.html)
+[![](http://www.r-pkg.org/badges/version/hellno)](ttps://cran.r-project.org/package=hellno)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/hellno)
 
 
