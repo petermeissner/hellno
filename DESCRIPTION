@@ -1,9 +1,8 @@
 Package: hellno
 Type: Package
-Title: Providing 'stringsAsFactors=FALSE' Variants of 'data.frame()' and
-    'as.data.frame()'
-Version: 0.2.0.9000
-Date: 2015-12-14
+Title: A Solution to the 'stringsAsFactors=FALSE' Problem
+Version: 0.2.0
+Date: 2016-05-12
 Author: Peter Meissner
 Maintainer: Peter Meissner <retep.meissner@gmail.com>
 Description: Base R's default setting for 'stringsAsFactors' within
@@ -12,9 +11,9 @@ Description: Base R's default setting for 'stringsAsFactors' within
     an explicit solution without changing R itself or having to mess around with
     options. It tries to solve this problem by providing alternative
     'data.frame()' and 'as.data.frame()' functions that are in fact simple
-    wrappers around base R's 'data.frame()' and 'as.data.frame()' with
-    'stringsAsFactors' option set to 'HELLNO' ( which in turn equals FALSE )
-    by default.
+    wrappers around base R's 'data.frame()', 'as.data.frame()', 'rbind()' and
+    'rbind.as.data.frame()' with 'stringsAsFactors' option set to 'HELLNO'
+    (which in turn equals FALSE)  by default.
 License: MIT + file LICENSE
 URL: https://github.com/petermeissner/hellno
 BugReports: https://github.com/petermeissner/hellno/issues

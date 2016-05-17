@@ -14,7 +14,7 @@ output:
 ---
 <!--
 <div style="text-align:center;">
-[![](blogpost/fig/logohellno100.png)](http://rtalk.org/strings-as-factors_hell-no_hex-sticker/) [![](blogpost/fig/clinthellno100.png)](https://twitter.com/zenrhino/status/623226883644129280) [![](blogpost/fig/hellno100.png)](https://cran.r-project.org/web/packages/hellno/index.html)
+[![](blogpost/fig/logohellno100.png)](http://rtalk.org/strings-as-factors_hell-no_hex-sticker/) [![](blogpost/fig/clinthellno100.png)](https://twitter.com/zenrhino/status/623226883644129280) [![](blogpost/fig/hellno100.png)](https://cran.r-project.org/package=hellno)
 </div>
 -->
 
@@ -25,7 +25,7 @@ output:
 **Info**
 
 
-[![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/web/packages/hellno/index.html)
+[![](http://www.r-pkg.org/badges/version/hellno)](https://cran.r-project.org/package=hellno)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/hellno)
 
 
